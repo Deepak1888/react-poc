@@ -1,44 +1,17 @@
-import { useState } from "react";
-//import "h8k-components";
-
+import React from "react";
 import "./App.css";
+//import "h8k-components";
+import FeedbackSystem from "../src/Ex2_code-review-feedback/CodeReviewFeedback";
 
-function App() {
-  const [items, setItems] = useState([]);
-  const [input, setInput] = useState("");
+const title = "Code Review Feedback";
 
-  const handleAddItem = () => {
-    if(input.trim() === "") return; 
-    setItems((prevItems)=> [...prevItems,input]);
-    setInput('');
-  };
-
+const App = () => {
   return (
-    <>
-      <h8k-navbar header="Item List Manager"></h8k-navbar>
-      <div className="App">
-        <h3>Item List</h3>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter item"
-          data-testid="input-field"
-        />
-        <button onClick={handleAddItem} data-testid="add-button">
-          Add Item
-        </button>
-        <ul data-testid="item-list">
-          {Array.isArray(items) &&
-          items.map((item, index) => (
-            <li key={index} data-testid="list-item">
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
+    <div className="App">
+      <h8k-navbar header={title}></h8k-navbar>
+      <FeedbackSystem />
+    </div>
   );
-}
+};
 
 export default App;
